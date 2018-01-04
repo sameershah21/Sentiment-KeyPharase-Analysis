@@ -17,5 +17,5 @@ Using Microsoft best practices, I used the Azure Cloud Explorer and File Explore
 Q: ADLA job output fails with number of columns, more or less compared to the actual file.<br/>
 A: Make sure the number of columns in csv match, double check that the Extraction Script is being generated using Visual Studio Tool. Make sure that input datatypes within the usql match the csv. If the csv file has headings then use skipFirstNRows:1 withing Extractors.CSV
 
-Q: Job errors out saying Cannot find ‘TEXT’ within the script <br/>
-A: Means that text is being parsed correctly. Resolution is same as above.
+Q: Job errors out saying Cannot find ‘TEXT’ within the script. <br/>
+A: Error means that text is being parsed in-correctly. Resolution is same as above.

@@ -3,7 +3,7 @@ This is a Machine Learning Review Processing code snippet that uses Azure Cognit
 <br/><b>PRE-REQUISITIES SETUP:</b> <br/>
 Assumes that you have Azure Data Lake Analytics(ADLA) Service and Azure Data Lake Storage (ADLS) Setup. Refer to following link to set both up: https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal
 
-<br/><b>CONTENTS: </b>
+<br/><b>CONTENTS: </b><br/>
 <b>Input/YelpReview.csv </b> : A scrubbed yelp review input file. It contains ‘comments’ field and other values that will be required to analyze the sentiments of the comments of different reviewers. The same field is also used to detect key phrases that a particular reviewer reviewed.
 Using Microsoft best practices, I used the Azure Cloud Explorer and File Explorer to generate the EXTRACT SCRIPT. Also, validated the csv file for proper line endings, separators and encodings.
 

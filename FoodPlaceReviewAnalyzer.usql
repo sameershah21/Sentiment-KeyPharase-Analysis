@@ -1,0 +1,75 @@
+REFERENCE ASSEMBLY [TextSentiment];
+REFERENCE ASSEMBLY [TextKeyPhrase];
+
+@YelpReview =
+    EXTRACT [Business_id] string,
+            [Date] DateTime,
+            [Review_id] string,
+            [Stars] int,
+            [Text] string,
+            [Type] string,
+            [User_id] string,
+            [Cool] int,
+            [Useful] int,
+            [Funny] int
+
+    FROM @"/Yelp-Reviews/FoodReviewCritic/YelpReview.csv"
+    USING Extractors.Csv(); //Skip header
+
+// Extract key phrases for each paragraph
+
+@keyphrase =
+    PROCESS @YelpReview
+    PRODUCE Business_id,
+            Date,
+            Review_id,
+            Stars,
+            Text,
+            Type,
+            User_id,
+            Cool,
+            Useful,
+            Funny,
+            KeyPhrase string
+    READONLY Business_id,
+            Review_id,
+            User_id,
+            Date,
+            Text
+   
+    USING new Cognition.Text.KeyPhraseExtractor();
+
+@keyphrase =
+    SELECT  Review_id,
+            Date,
+            Text,
+            SqlArray.Create(KeyPhrase.Split(';')) AS KeyPhraseArray  
+    FROM @keyphrase;
+
+@split_keyphrases =
+    SELECT  Review_id,
+            Date,
+            Text,
+            KeyPhrase  
+    FROM @keyphrase
+        CROSS APPLY EXPLODE (KeyPhraseArray) AS r(KeyPhrase);
+
+@sentiment =
+    PROCESS @YelpReview
+    PRODUCE Review_id,
+            Date,
+            Text,
+            Sentiment string,
+            Conf double
+    READONLY Review_id,
+            Date,
+            Text
+    USING new Cognition.Text.SentimentAnalyzer(true);
+
+OUTPUT @split_keyphrases 
+    TO "/split_keyphrases.csv"
+    USING Outputters.Csv();
+
+OUTPUT @sentiment 
+    TO "/sentiment.csv"
+    USING Outputters.Csv();

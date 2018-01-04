@@ -14,8 +14,8 @@ Using Microsoft best practices, I used the Azure Cloud Explorer and File Explore
 <b>Output/split_keyphrases.csv</b> - Generated after the Food Place Review Analyzer Job runs on the ADLA using inputs from ADLS.
 
 <b>TROUBLESHOOTING:</b> <br/>
-Q: ADLA job output fails with number of columns, more or less compared to the actual file.
+Q: ADLA job output fails with number of columns, more or less compared to the actual file.<br/>
 A: Make sure the number of columns in csv match, double check that the Extraction Script is being generated using Visual Studio Tool. Make sure that input datatypes within the usql match the csv. If the csv file has headings then use skipFirstNRows:1 withing Extractors.CSV
 
-Q: Job errors out saying Cannot find ‘TEXT’ within the script
+Q: Job errors out saying Cannot find ‘TEXT’ within the script <br/>
 A: Means that text is being parsed correctly. Resolution is same as above.

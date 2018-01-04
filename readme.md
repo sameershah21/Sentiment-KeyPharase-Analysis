@@ -1,6 +1,6 @@
 <b>SUMMARY:</b> <br/>
-This is a Machine Learning Review Processing code snippet that uses Azure Cognitve Services – Text API to detect sentiments and key phrases of reviews left by users. 
-<br/><b>PRE-REQUISITIES SETUP:</b> <br/>
+This is a Machine Learning Review Processing code snippet that uses Azure Cognitve Services – Text API to detect sentiments and key phrases of reviews left by users. <br/>
+<b>PRE-REQUISITIES SETUP:</b> <br/>
 Assumes that you have Azure Data Lake Analytics(ADLA) Service and Azure Data Lake Storage (ADLS) Setup. Refer to following link to set both up: https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal
 
 <br/><b>CONTENTS: </b><br/>
